@@ -5,7 +5,7 @@ declare module 'discord-akairo' {
         MessageAdditions, MessageEditOptions, MessageOptions, SplitOptions,
         User, UserResolvable, GuildMember,
         Channel, TextChannel, NewsChannel, Role, Emoji, Guild,
-        PermissionResolvable, StringResolvable, Snowflake
+        PermissionResolvable, StringResolvable, Snowflake, WebhookClient
     } from 'discord.js';
 
     import { EventEmitter } from 'events';
@@ -158,6 +158,7 @@ declare module 'discord-akairo' {
         public resolveRoles(text: string, roles: Collection<Snowflake, Role>, caseSensitive?: boolean, wholeWord?: boolean): Collection<Snowflake, Role>;
         public resolveUser(text: string, users: Collection<Snowflake, User>, caseSensitive?: boolean, wholeWord?: boolean): User;
         public resolveUsers(text: string, users: Collection<Snowflake, User>, caseSensitive?: boolean, wholeWord?: boolean): Collection<Snowflake, User>;
+        public webhook(link: string): WebhookClient | null;
     }
 
     export class Command extends AkairoModule {
