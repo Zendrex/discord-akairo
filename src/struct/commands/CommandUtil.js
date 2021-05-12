@@ -127,12 +127,13 @@ class CommandUtil {
     }
 
     /**
-     * Sends a response with a mention concantenated to it.
+     * Sends a response with a mention concatenated to it.
      * @param {StringResolvable} [content=''] - Content to send.
      * @param {MessageOptions|MessageAdditions} [options={}] - Options to use.
      * @returns {Promise<Message|Message[]>}
      */
     reply(content, options) {
+        // TODO: Wait for discord.js to offically update to v13.
         return this.send(this.constructor.transformOptions(content, options, { reply: this.message.member || this.message.author }));
     }
 
