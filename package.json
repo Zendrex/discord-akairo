@@ -1,10 +1,10 @@
 {
-    "name": "discord-akairo",
-    "version": "8.1.0",
-    "description": "A highly customizable bot framework for Discord.js.",
+    "name": "@zendrex/discord-akairo",
+    "version": "1.0",
+    "description": "A highly customizable bot framework for Discord.js, modified and updated by Zendrex",
     "main": "./src/index.js",
     "types": "./src/index.d.ts",
-    "author": "1Computer",
+    "author": "Zendrex",
     "license": "MIT",
     "keywords": [
         "discord",
@@ -17,7 +17,6 @@
         "commands",
         "arguments"
     ],
-    "dependencies": {},
     "devDependencies": {
         "@types/node": "^10.14.4",
         "discord.js-docgen": "github:discordjs/docgen",
@@ -33,10 +32,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/discord-akairo/discord-akairo.git"
+        "url": "https://github.com/zendrex/discord-akairo.git"
     },
     "bugs": {
-        "url": "https://github.com/discord-akairo/discord-akairo/issues"
+        "url": "https://github.com/zendrex/discord-akairo/issues"
     },
-    "homepage": "https://github.com/discord-akairo/discord-akairo"
+    "homepage": "https://github.com/zendrex/discord-akairo"
 }
