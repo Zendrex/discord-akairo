@@ -15,12 +15,14 @@
 </div>
 
 ## Features
+Any features with "**" are additional features added in this fork.
 
 #### Completely modular commands, inhibitors, and listeners.
 
   - Reading files recursively from directories.
   - Adding, removing, and reloading modules.
   - Creating your own handlers and module types.
+  - ** Enable states for these and all additional modules.
 
 #### Flexible command handling and creation.
 
@@ -64,7 +66,7 @@
   - Resolvers for members, users, and others that can filter by name.
   - Shortcut methods for making embeds and collections.
   - Simple to use database providers.
-    - Built-in support for `sqlite` and `sequelize`.
+    - Built-in support for `sqlite/**sqlite3` and `sequelize`.
     - Works on entire table or single JSON column.
     - Caching data from databases.
 
@@ -73,13 +75,14 @@
 Requires Node 12+ and Discord.js v12.  
 
 *discord-akairo*  
-`npm install discord-akairo`
+`npm install @zendrex/discord-akairo`
 
 *discord.js*  
 `npm install discord.js`
 
 *sqlite (optional)*  
 `npm install sqlite`
+`npm install sqlite3`
 
 *sequelize (optional)*  
 `npm install sequelize`
@@ -87,11 +90,15 @@ Requires Node 12+ and Discord.js v12.
 ## Links
 
 - [Website](https://discord-akairo.github.io)
-- [Repository](https://github.com/discord-akairo/discord-akairo)  
-- [Changelog](https://github.com/discord-akairo/discord-akairo/releases)
-- [Discord](https://discord.gg/arTauDY)  
+- [Repository](https://github.com/zendrex/discord-akairo)  
+- [Changelog](https://github.com/zendrex/discord-akairo/releases)
+- [Discord](https://discord.gg/arTauDY) (Zendrex#0001)
 
 ## Contributing
+
+Due to the lack of development on the official repository, I will be as active
+as I can to ensure this fork stays updated with Discord.JS's changes, as well as
+add quality of life features, bug fixes and performance boosts.
 
 Open an issue or a pull request!  
 Everyone is welcome to do so.  
