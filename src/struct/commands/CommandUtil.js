@@ -133,7 +133,8 @@ class CommandUtil {
      * @returns {Promise<Message|Message[]>}
      */
     reply(content, options) {
-        // TODO: Wait for discord.js to offically update to v13.
+        // eslint-disable-next-line no-warning-comments
+        // TODO: Wait for discord.js to officially update to v13.
         return this.send(this.constructor.transformOptions(content, options, { reply: this.message.member || this.message.author }));
     }
 
