@@ -12,7 +12,7 @@ const ContentParser = require('./ContentParser');
  */
 class Command extends AkairoModule {
     constructor(id, options = {}) {
-        super(id, { category: options.category });
+        super(id, { category: options.category, enabled: options.enabled });
 
         const {
             aliases = [],

@@ -1,5 +1,6 @@
 const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler, SQLiteProvider } = require('../../src/index');
 const sqlite = require('sqlite');
+const sqlite3 = require('sqlite3');
 
 class TestClient extends AkairoClient {
     constructor() {
@@ -11,7 +12,7 @@ class TestClient extends AkairoClient {
             directory: './test/commands/',
             ignoreCooldownID: ['132266422679240704'],
             aliasReplacement: /-/g,
-            prefix: '!!',
+            prefix: '!',
             allowMention: true,
             commandUtil: true,
             commandUtilLifetime: 10000,
@@ -33,17 +34,22 @@ class TestClient extends AkairoClient {
             }
         });
 
-        this.inhibitorHandler = new InhibitorHandler(this, {
-            directory: './test/inhibitors/'
-        });
-
         this.listenerHandler = new ListenerHandler(this, {
             directory: './test/listeners/'
         });
 
-        const db = sqlite.open('./test/db.sqlite')
+        this.inhibitorHandler = new InhibitorHandler(this, {
+            directory: './test/inhibitors/'
+        });
+
+        const db = sqlite.open({
+            filename: './test/db.sqlite',
+            driver: sqlite3.Database
+        })
             .then(d => d.run('CREATE TABLE IF NOT EXISTS guilds (id TEXT NOT NULL UNIQUE, settings TEXT)').then(() => d));
-        this.settings = new SQLiteProvider(db, 'guilds', { dataColumn: 'settings' });
+        this.settings = new SQLiteProvider(db, 'guilds', {
+            dataColumn: 'settings'
+        });
 
         this.setup();
     }
@@ -58,9 +64,9 @@ class TestClient extends AkairoClient {
             listenerHandler: this.listenerHandler
         });
 
+        this.listenerHandler.loadAll();
         this.commandHandler.loadAll();
         this.inhibitorHandler.loadAll();
-        this.listenerHandler.loadAll();
 
         const resolver = this.commandHandler.resolver;
         resolver.addType('1-10', (message, phrase) => {

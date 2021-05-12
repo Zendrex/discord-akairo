@@ -61,7 +61,8 @@ module.exports = {
     },
     AkairoHandlerEvents: {
         LOAD: 'load',
-        REMOVE: 'remove'
+        REMOVE: 'remove',
+        DISABLED: 'disabled'
     },
     CommandHandlerEvents: {
         MESSAGE_BLOCKED: 'messageBlocked',
@@ -82,5 +83,7 @@ module.exports = {
         OWNER: 'owner',
         GUILD: 'guild',
         DM: 'dm'
+            value: 1
+        }
     }
 };

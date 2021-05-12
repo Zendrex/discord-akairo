@@ -56,7 +56,7 @@ class CommandHandler extends AkairoHandler {
         this.resolver = new TypeResolver(this);
 
         /**
-         * Collecion of command aliases.
+         * Collection of command aliases.
          * @type {Collection<string, string>}
          */
         this.aliases = new Collection();
@@ -191,7 +191,7 @@ class CommandHandler extends AkairoHandler {
          * The prefix(es) for command parsing.
          * @type {string|string[]|PrefixSupplier}
          */
-        this.prefix = typeof prefix === 'function' ? prefix.bind(this) : prefix;
+        this.prefix = typeof prefix === 'function' ? prefix.bind(this)() : prefix;
 
         /**
          * Whether or not mentions are allowed for prefixing.
@@ -294,7 +294,7 @@ class CommandHandler extends AkairoHandler {
     }
 
     /**
-     * Deregisters a module.
+     * De-registers a module.
      * @param {Command} command - Module to use.
      * @returns {void}
      */

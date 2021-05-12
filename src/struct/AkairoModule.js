@@ -4,12 +4,18 @@
  * @param {AkairoModuleOptions} [options={}] - Options.
  */
 class AkairoModule {
-    constructor(id, { category = 'default' } = {}) {
+    constructor(id, { category = 'default', enabled = true } = {}) {
         /**
          * ID of the module.
          * @type {string}
          */
         this.id = id;
+
+        /**
+         * Determines if module is enabled.
+         * @type {boolean}
+         */
+        this.enabled = enabled;
 
         /**
          * ID of the category this belongs to.

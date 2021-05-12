@@ -12,9 +12,10 @@ class Listener extends AkairoModule {
         category,
         emitter,
         event,
-        type = 'on'
+        type = 'on',
+        enabled
     } = {}) {
-        super(id, { category });
+        super(id, { category, enabled });
 
         /**
          * The event emitter.

@@ -481,6 +481,7 @@ declare module 'discord-akairo' {
 
     export interface AkairoModuleOptions {
         category?: string;
+        enabled?: boolean;
     }
 
     export interface AkairoOptions {

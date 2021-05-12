@@ -12,9 +12,10 @@ class Inhibitor extends AkairoModule {
         category,
         reason = '',
         type = 'post',
-        priority = 0
+        priority = 0,
+        enabled
     } = {}) {
-        super(id, { category });
+        super(id, { category, enabled });
 
         /**
          * Reason emitted when command is inhibited.

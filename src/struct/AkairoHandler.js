@@ -99,7 +99,7 @@ class AkairoHandler extends EventEmitter {
     }
 
     /**
-     * Deregisters a module.
+     * De-registers a module.
      * @param {AkairoModule} mod - Module to use.
      * @returns {void}
      */
@@ -136,9 +136,15 @@ class AkairoHandler extends EventEmitter {
 
         if (this.modules.has(mod.id)) throw new AkairoError('ALREADY_LOADED', this.classToHandle.name, mod.id);
 
-        this.register(mod, isClass ? null : thing);
-        this.emit(AkairoHandlerEvents.LOAD, mod, isReload);
-        return mod;
+
+        if (mod.enabled) {
+            this.register(mod, isClass ? null : thing);
+            this.emit(AkairoHandlerEvents.LOAD, mod, isReload);
+            return mod;
+        } else {
+            this.emit(AkairoHandlerEvents.DISABLED, mod, isReload);
+            return null;
+        }
     }
 
     /**
