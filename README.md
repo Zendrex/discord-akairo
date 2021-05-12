@@ -47,6 +47,8 @@ Any features with "**" are additional features added in this fork.
     - Customizable prompts with embeds, files, etc.
     - Easily include dynamic data such as the incorrect input.
     - Infinite argument prompting.
+  - Support for a timespan type to milliseconds.
+    - Example: !time 1d
 
 #### Blocking and monitoring messages with inhibitors.
 
