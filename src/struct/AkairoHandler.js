@@ -2,7 +2,7 @@ const AkairoError = require('../util/AkairoError');
 const { AkairoHandlerEvents } = require('../util/Constants');
 const AkairoModule = require('./AkairoModule');
 const Category = require('../util/Category');
-const { Collection } = require('discord.js');
+const { Constants, Collection } = require('discord.js');
 const EventEmitter = require('events');
 const fs = require('fs');
 const path = require('path');
@@ -28,6 +28,7 @@ class AkairoHandler extends EventEmitter {
          * @type {AkairoClient}
          */
         this.client = client;
+        client.once(Constants.Events.CLIENT_READY, this.init.bind(this));
 
         /**
          * The main directory to modules.
@@ -233,6 +234,27 @@ class AkairoHandler extends EventEmitter {
     }
 
     /**
+     * Initiates all modules (calls each module's `init`)
+     * @returns {Promise<void>}
+     * @emits AkairoHandler#init
+     * @emits AkairoHandler#initiated
+     */
+    async init() {
+        const promises = [];
+
+        for (const mod of this.modules.values()) {
+            promises.push((async () => {
+                if (await mod.init() !== AkairoHandlerEvents.INIT_DEFAULT) {
+                    this.emit(AkairoHandlerEvents.INIT, mod);
+                }
+            })());
+        }
+
+        await Promise.all(promises);
+        this.emit(AkairoHandlerEvents.ALL_INITIATED);
+    }
+
+    /**
      * Reads files recursively from a directory.
      * @param {string} directory - Directory to read.
      * @returns {string[]}
@@ -271,6 +293,17 @@ module.exports = AkairoHandler;
  * Emitted when a module is removed.
  * @event AkairoHandler#remove
  * @param {AkairoModule} mod - Module removed.
+ */
+
+/**
+ * Emitted when a module is initiated
+ * @event AkairoHandler#init
+ * @param {AkairoModule} mod - Module initiated
+ */
+
+/**
+ * Emitted when all modules of this handler have been initiated
+ * @event AkairoHandler#initiated
  */
 
 /**

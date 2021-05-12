@@ -1,3 +1,5 @@
+const { AkairoHandlerEvents } = require('../util/Constants');
+
 /**
  * Base class for a module.
  * @param {string} id - ID of module.
@@ -70,6 +72,16 @@ class AkairoModule {
      */
     toString() {
         return this.id;
+    }
+
+    /**
+     * Called once the client emits `ready`
+     * @returns {any}
+     * @abstract
+     */
+    // eslint-disable-next-line no-empty-function
+    init() {
+        return AkairoHandlerEvents.INIT_DEFAULT;
     }
 }
 
